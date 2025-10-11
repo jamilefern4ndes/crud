@@ -29,33 +29,31 @@ function updateSavedTasksList() {
 
   const tasks = JSON.parse(localStorage.getItem('tasks')) || []
 
-  tasks.forEach((task, index) => {
+  tasks.forEach(task => {
     const p = document.createElement('p')
     p.setAttribute('class', 'saved')
     p.textContent = task.title
 
-    // Adiciona botão de exclusão
-    deleteTask(p, index)
+    // Visualizar conteúdo ao clicar no título
+    p.addEventListener('click', () => {
+      leadTask(task.title)
+    })
 
     taskSaved.appendChild(p)
   })
 }
 
-// Função para criar botão de exclusão
-function deleteTask(p, index) {
-  const buttonDeleteTask = document.createElement('div')
-  buttonDeleteTask.setAttribute('class', 'delete-button')
-  buttonDeleteTask.textContent = 'X'
-  buttonDeleteTask.title = 'Excluir tarefa'
+// Carrega título e conteúdo nos inputs
+function leadTask(title) {
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+  const task = tasks.find(t => t.title === title)
 
-  buttonDeleteTask.addEventListener('click', () => {
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || []
-    tasks.splice(index, 1)
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-    updateSavedTasksList()
-  })
-
-  p.appendChild(buttonDeleteTask)
+  if (task) {
+    inputTitle.value = task.title
+    inputContent.value = task.content
+  } else {
+    alert('Tarefa não encontrada.')
+  }
 }
 
 // Carrega a lista ao abrir a página
