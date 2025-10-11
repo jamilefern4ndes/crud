@@ -5,7 +5,7 @@
     --cor-secundaria: #298312;
     --cor-detalhe: #252525;
     --cor-fonte: #ffffffdd;
-
+    --cor-fonte2: #b8b8b8;
     --fonte-base: Arial;
     --font-weight: 100;
 }
@@ -24,16 +24,8 @@
 section.tasks{
     grid-area: 1/1/2/2;
     border-right: 1px solid var(--cor-detalhe);
-    padding: 10px;
     position: relative;
 }
-    .tasks h2{
-        text-align: center;
-        font-family: var(--fonte-base);
-        font-weight: var(--font-weight);
-        font-size: 1.9vw;
-        margin: 2vh auto;
-    }
    
 section.new-task{
     grid-area: 1/2/2/2;
@@ -44,7 +36,7 @@ div#header{
     display: flex;
     justify-content: end;
     width: 100%;
-    padding: 10px;
+    padding: 5px;
 }
     div#header h2{
         text-align: center;
@@ -55,11 +47,13 @@ div#header{
     }
     button#saveTask{
         width: 8vw;
+        height: 3vw;
         font-size: 1.9vw;
         background-color: var(--cor-secundaria);
         color: var(--cor-fonte);
         border-radius: 5px;
         border: 1px solid var(--cor-detalhe);
+        align-self: self-start;
     }
 
 /* configurando entrada de dados */
@@ -108,4 +102,48 @@ textarea::-webkit-scrollbar-thumb {
 textarea::-webkit-scrollbar-thumb:hover {
   background-color: #555;
   cursor: grab;
+}
+
+/* configurando lista de tarefas salvas */
+.tasks h2{
+    text-align: center;
+    font-family: var(--fonte-base);
+    font-weight: var(--font-weight);
+    font-size: 1.9vw;
+    margin: 2vh auto;
+    padding: 5px;
+    border-bottom: 1px solid var(--cor-detalhe);
+}
+p.saved{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 1px;
+    height: 2vw;
+    font-family: var(--fonte-base);
+    font-size: 1.2vw;
+    color: var(--cor-fonte);
+    border-radius: 10px ;
+    padding-left: 0.7vw;
+}
+.delete-button{
+    background-color: red;
+    color: white;
+    box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.518);
+    border-radius: 50%;
+    margin: 1px;
+    width: 2vw;
+    height: 2vw;
+    display: none;
+    align-items: center;
+    text-indent: 60%;
+    cursor: pointer;
+}
+.saved:hover{
+    background-color: var(--cor-detalhe);
+    color: white;
+}
+.saved:hover > .delete-button{
+    display: flex;
 }

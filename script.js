@@ -1,40 +1,62 @@
-const inputTitle = document.getElementById('title')       //input do título
-const inputContent = document.getElementById('content')   //input do conteúdo
-const saveTask = document.querySelector('#saveTask')      //botão de salvar
+const inputTitle = document.getElementById('title')
+const inputContent = document.getElementById('content')
+const saveTask = document.querySelector('#saveTask')
 
-saveTask.addEventListener('click', () => {   //evento click
-    const title = inputTitle.value.trim()
-    const content = inputContent.value.trim()
+// Salvar nova tarefa
+saveTask.addEventListener('click', () => {
+  const title = inputTitle.value.trim()
+  const content = inputContent.value.trim()
 
-    if (title === '' || content === '') {
-        alert('Preencha título e conteúdo da tarefa.')       //garante que tenha um conteúdo sempre
-        return
-    }
- 
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [] //recupera array ou cria um novo
-    tasks.push({ title, content })                         
-    localStorage.setItem('tasks', JSON.stringify(tasks))  //salva array no localstorage
+  if (title === '' || content === '') {
+    alert('Preencha título e conteúdo da tarefa.')
+    return
+  }
 
-    updateSavedTasksList()                             //atualiza a lista lateral
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+  tasks.push({ title, content })
+  localStorage.setItem('tasks', JSON.stringify(tasks))
 
-    inputTitle.value = ''                             //limpa os campos
-    inputContent.value = ''
+  updateSavedTasksList()
+
+  inputTitle.value = ''
+  inputContent.value = ''
 })
 
-//atualiza a lista lateral com os títulos salvos
+// Atualiza a lista lateral com os títulos salvos
 function updateSavedTasksList() {
-    const taskSaved = document.querySelector('.list-tasks-saved')
-    taskSaved.innerHTML = ''                                      //limpa a lista antes de atualizar
+  const taskSaved = document.querySelector('.list-tasks-saved')
+  taskSaved.innerHTML = ''
 
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || []
 
-    tasks.forEach(task => {
+  tasks.forEach((task, index) => {
     const p = document.createElement('p')
     p.setAttribute('class', 'saved')
-    p.textContent = task.title              //mostra o título da tarefa
+    p.textContent = task.title
+
+    // Adiciona botão de exclusão
+    deleteTask(p, index)
+
     taskSaved.appendChild(p)
   })
 }
 
-//carrega a lista ao abrir a página
+// Função para criar botão de exclusão
+function deleteTask(p, index) {
+  const buttonDeleteTask = document.createElement('div')
+  buttonDeleteTask.setAttribute('class', 'delete-button')
+  buttonDeleteTask.textContent = 'X'
+  buttonDeleteTask.title = 'Excluir tarefa'
+
+  buttonDeleteTask.addEventListener('click', () => {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+    tasks.splice(index, 1)
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+    updateSavedTasksList()
+  })
+
+  p.appendChild(buttonDeleteTask)
+}
+
+// Carrega a lista ao abrir a página
 window.addEventListener('load', updateSavedTasksList)
