@@ -147,3 +147,27 @@ p.saved{
 .saved:hover > .delete-button{
     display: flex;
 }
+
+
+/* adaptação telas pequenas (menores de 700 px) */
+@media screen and (max-width: 700px) {
+    p.saved{
+        font-size: 2vw;
+        height: 2.4vw;
+    }
+    .delete-button{
+        width: 2.5vw;
+        height: 2.5vw;
+        font-size: 1.5vw;
+    }
+    button#saveTask{
+        width: 8vw;
+        height: auto;
+        font-size: 2vw;
+        background-color: var(--cor-secundaria);
+        color: var(--cor-fonte);
+        border-radius: 5px;
+        border: 1px solid var(--cor-detalhe);
+        align-self: stretch;
+    }
+}
