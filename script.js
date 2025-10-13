@@ -8,7 +8,13 @@ const newTask       = document.querySelector('#newTask')          //criar nova t
 
 
 //salvar nova tarefa
-saveTask.addEventListener('click', () => {
+saveTask.addEventListener('click', saveThisTask) 
+inputContent.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      saveThisTask()
+    }
+})
+function saveThisTask(){
     const title = inputTitle.value.trim()
     const content = inputContent.value.trim()
 
@@ -25,7 +31,7 @@ saveTask.addEventListener('click', () => {
 
     inputTitle.value = ''
     inputContent.value = ''
-})
+}
 
 //atualiza a lista lateral com os títulos salvos
 function updateSavedTasksList() {
@@ -67,7 +73,6 @@ function leadTask(title) {
     }
     
 }
-
 function actions(task) {
   //deletar tarefa
   deleteTask.onclick = () => {
@@ -93,5 +98,6 @@ function actions(task) {
     newTask.style.display = 'none'
   }
 }
+
 //carrega a lista ao abrir a página
 window.addEventListener('load', updateSavedTasksList)

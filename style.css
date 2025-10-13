@@ -48,6 +48,13 @@ section.new-task{
         border-radius: 5px;
         border: 1px solid var(--cor-detalhe);
         padding: 1vw;
+        transition: all 0.4s ease-in;
+    }
+    header button:hover{
+        opacity: 80%;
+    }
+    header button:active{
+        transform: scale(0.95);
     }
     button#saveTask{
         background-color: var(--cor-secundaria);
@@ -141,7 +148,6 @@ p.saved{
     background-color: var(--cor-detalhe);
     color: white;
 }
-/* apnas uma adaptação temporária */
 
 /* adaptação telas pequenas (menores de 700 px) */
 /* @media screen and (max-width: 700px) {
