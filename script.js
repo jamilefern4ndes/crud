@@ -1,60 +1,97 @@
-const inputTitle = document.getElementById('title')
-const inputContent = document.getElementById('content')
-const saveTask = document.querySelector('#saveTask')
 
-// Salvar nova tarefa
+const inputTitle    = document.getElementById('title')            //entrada do título
+const inputContent  = document.getElementById('content')          //entrada do conteúdo
+//butões de ação
+const saveTask      = document.querySelector('#saveTask')         //salvar tarefa
+const deleteTask    = document.querySelector('#deleteTask')       //deletar tarefa
+const newTask       = document.querySelector('#newTask')          //criar nova tarefa
+
+
+//salvar nova tarefa
 saveTask.addEventListener('click', () => {
-  const title = inputTitle.value.trim()
-  const content = inputContent.value.trim()
+    const title = inputTitle.value.trim()
+    const content = inputContent.value.trim()
 
-  if (title === '' || content === '') {
-    alert('Preencha título e conteúdo da tarefa.')
-    return
-  }
+    if (title === '' || content === '') {
+      alert('Preencha título e conteúdo da tarefa.')
+      return
+    }
 
-  const tasks = JSON.parse(localStorage.getItem('tasks')) || []
-  tasks.push({ title, content })
-  localStorage.setItem('tasks', JSON.stringify(tasks))
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+    tasks.push({ title, content })
+    localStorage.setItem('tasks', JSON.stringify(tasks))
 
-  updateSavedTasksList()
+    updateSavedTasksList()
 
-  inputTitle.value = ''
-  inputContent.value = ''
+    inputTitle.value = ''
+    inputContent.value = ''
 })
 
-// Atualiza a lista lateral com os títulos salvos
+//atualiza a lista lateral com os títulos salvos
 function updateSavedTasksList() {
-  const taskSaved = document.querySelector('.list-tasks-saved')
-  taskSaved.innerHTML = ''
+    const taskSaved = document.querySelector('.list-tasks-saved')
+    taskSaved.innerHTML = ''
 
-  const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || []
 
-  tasks.forEach(task => {
-    const p = document.createElement('p')
-    p.setAttribute('class', 'saved')
-    p.textContent = task.title
+    tasks.forEach(task => {
+      const p = document.createElement('p')
+      p.setAttribute('class', 'saved')
+      p.textContent = task.title
 
-    // Visualizar conteúdo ao clicar no título
-    p.addEventListener('click', () => {
-      leadTask(task.title)
+      //visualizar conteúdo ao clicar no título
+      p.addEventListener('click', () => {
+        leadTask(task.title)
+      })
+
+      taskSaved.appendChild(p)
     })
-
-    taskSaved.appendChild(p)
-  })
 }
 
-// Carrega título e conteúdo nos inputs
+//carrega título e conteúdo 
 function leadTask(title) {
-  const tasks = JSON.parse(localStorage.getItem('tasks')) || []
-  const task = tasks.find(t => t.title === title)
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+    const task = tasks.find(t => t.title === title)
 
-  if (task) {
-    inputTitle.value = task.title
-    inputContent.value = task.content
-  } else {
-    alert('Tarefa não encontrada.')
+    if (task) {
+      inputTitle.value = task.title
+      inputContent.value = task.content
+
+      deleteTask.classList.toggle('buttons')
+      newTask.style.display = 'inline-block' 
+      deleteTask.style.display = 'inline-block'
+      saveTask.style.display = 'none'
+      actions(task)
+    } else {
+      alert('Tarefa não encontrada.')
+    }
+    
+}
+
+function actions(task) {
+  //deletar tarefa
+  deleteTask.onclick = () => {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+    const updatedTasks = tasks.filter(t => t.title !== task.title)
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks))
+
+    inputTitle.value = ''
+    inputContent.value = ''
+    saveTask.style.display = 'inline-block'
+    deleteTask.style.display = 'none'
+    newTask.style.display = 'none'
+
+    updateSavedTasksList()
+  }
+
+  //nova tarefa
+  newTask.onclick = () => {
+    inputTitle.value = ''
+    inputContent.value = ''
+    saveTask.style.display = 'inline-block'
+    deleteTask.style.display = 'none'
+    newTask.style.display = 'none'
   }
 }
-
-// Carrega a lista ao abrir a página
+//carrega a lista ao abrir a página
 window.addEventListener('load', updateSavedTasksList)

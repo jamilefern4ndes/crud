@@ -32,29 +32,38 @@ section.new-task{
     padding: 10px;
 }
 
-div#header{
+#header{
     display: flex;
+    flex-wrap: wrap-reverse;
     justify-content: end;
-    width: 100%;
-    padding: 5px;
+    align-items: center;
 }
-    div#header h2{
-        text-align: center;
-        font-family: var(--fonte-base);
-        font-weight: var(--font-weight);
-        font-size: 1.9vw;
-        margin: 2vh auto;
+
+    header .buttons{
+        align-self: flex-end;
     }
-    button#saveTask{
-        width: 8vw;
-        height: 3vw;
+    header button{
         font-size: 1.9vw;
-        background-color: var(--cor-secundaria);
         color: var(--cor-fonte);
         border-radius: 5px;
         border: 1px solid var(--cor-detalhe);
-        align-self: self-start;
+        padding: 1vw;
     }
+    button#saveTask{
+        background-color: var(--cor-secundaria);
+    }
+    button#deleteTask{
+        background-color: red;
+        display: none;
+    }
+    button#newTask{
+        background-color: darkcyan;
+        display: none;
+    }
+
+.action{
+    display: block;
+}
 
 /* configurando entrada de dados */
 
@@ -119,7 +128,7 @@ p.saved{
     justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
-    margin-bottom: 1px;
+    margin:2px;
     height: 2vw;
     font-family: var(--fonte-base);
     font-size: 1.2vw;
@@ -135,7 +144,7 @@ p.saved{
 /* apnas uma adaptação temporária */
 
 /* adaptação telas pequenas (menores de 700 px) */
-@media screen and (max-width: 700px) {
+/* @media screen and (max-width: 700px) {
     p.saved{
         font-size: 2vw;
         height: 2.4vw;
@@ -150,4 +159,4 @@ p.saved{
         border: 1px solid var(--cor-detalhe);
         align-self: stretch;
     }
-}
+} */

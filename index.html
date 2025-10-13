@@ -9,19 +9,19 @@
 <body>
     <main class="container">
         <section class="tasks">
-            <!-- <div id="addNew">
-                <button>New Task</button>
-            </div> -->
             <h2>Your Tasks</h2>
             <div class="list-tasks-saved">
 
             </div>
         </section>
         <section class="new-task">
-            <div id="header">
-                <h2>New Task</h2>
-                <button id="saveTask" disable>save</button>
-            </div>
+            <header id="header">
+                <div class="buttons">
+                    <button id="saveTask">Save</button>
+                    <button id="deleteTask">Delete</button>
+                    <button id="newTask">New</button>
+                </div>
+            </header>
             <input type="text" name="title" id="title" placeholder="Title..." maxlength="22">
             <textarea name="content" id="content" placeholder="Enter the task content"></textarea>
         </section>
