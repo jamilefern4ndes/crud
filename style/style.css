@@ -48,7 +48,7 @@ section.new-task{
 
     }
     header button{
-        font-size: 1.9vw;
+        font-size: 2.5vw;
         color: var(--cor-fonte);
         border-radius: 5px;
         border: 1px solid var(--cor-detalhe);
@@ -85,18 +85,17 @@ input#title{
     border:none;
     padding: 2px;
     width: 70vw;
-    font-size: 3.1vw; 
+    font-size: 4vw; 
     color: var(--cor-fonte);
 
 }
 #content{
-    margin: 10px auto;
     background-color: transparent;
     border:none;
     padding: 5px;
     width: 70vw;
     height: 70vh;
-    font-size: 2vw; 
+    font-size: 3vw; 
     color: var(--cor-fonte);
     resize: none;
     font-family: var(--fonte-base);
@@ -130,7 +129,7 @@ textarea::-webkit-scrollbar-thumb:hover {
     text-align: center;
     font-family: var(--fonte-base);
     font-weight: var(--font-weight);
-    font-size: 1.9vw;
+    font-size: 2.3vw;
     margin: 2vh auto;
     padding: 5px;
     border-bottom: 1px solid var(--cor-detalhe);
@@ -143,9 +142,9 @@ p.saved{
     margin:2px;
     height: 2vw;
     font-family: var(--fonte-base);
-    font-size: 1.2vw;
+    font-size: 2vw;
     color: var(--cor-fonte);
-    border-radius: 10px ;
+    border-radius: 5px ;
     padding-left: 0.7vw;
 }
 
@@ -160,20 +159,3 @@ p.saved{
     transition: all 0.4s ease;
 }
 
-/* adaptação telas pequenas (menores de 700 px) */
-/* @media screen and (max-width: 700px) {
-    p.saved{
-        font-size: 2vw;
-        height: 2.4vw;
-    }
-    button#saveTask{
-        width: 8vw;
-        height: auto;
-        font-size: 2vw;
-        background-color: var(--cor-secundaria);
-        color: var(--cor-fonte);
-        border-radius: 5px;
-        border: 1px solid var(--cor-detalhe);
-        align-self: stretch;
-    }
-} */
