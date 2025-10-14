@@ -2,10 +2,10 @@
 const inputTitle    = document.getElementById('title')            //entrada do título
 const inputContent  = document.getElementById('content')          //entrada do conteúdo
 //butões de ação
+const shrinkList    = document.querySelector('#shrinkList')       //encolher lista
 const saveTask      = document.querySelector('#saveTask')         //salvar tarefa
 const deleteTask    = document.querySelector('#deleteTask')       //deletar tarefa
 const newTask       = document.querySelector('#newTask')          //criar nova tarefa
-
 
 //salvar nova tarefa
 saveTask.addEventListener('click', saveThisTask) 
@@ -98,6 +98,22 @@ function actions(task) {
     newTask.style.display = 'none'
   }
 }
+//encolher a lista de itens salvos
+shrinkList.addEventListener('click', () => {
+  //mudar botão
+    if (shrinkList.textContent === '<') {
+        shrinkList.textContent = '>'
+        document.querySelector('.tasks').style.display = 'none'   //recolher lista
+    } else {
+        shrinkList.textContent = '<'
+        document.querySelector('.tasks').style.display = 'block'
+    }
+
+    const container = document.querySelector('.container')         //mostrar lista
+    container.classList.toggle('move')
+});
+
+
 
 //carrega a lista ao abrir a página
 window.addEventListener('load', updateSavedTasksList)

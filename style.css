@@ -18,13 +18,13 @@
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template: auto/20% 1fr;
+    grid-template: auto/25% 1fr;
 
 }
 section.tasks{
     grid-area: 1/1/2/2;
     border-right: 1px solid var(--cor-detalhe);
-    position: relative;
+    transition: all 0.4s ease;
 }
    
 section.new-task{
@@ -35,12 +35,17 @@ section.new-task{
 #header{
     display: flex;
     flex-wrap: wrap-reverse;
-    justify-content: end;
-    align-items: center;
+    justify-content: space-between;
 }
-
+    header #shrinkList{
+       background-color: var(--cor-detalhe);
+       color: var(--cor-fonte2);
+       border-color: #1b1b1b;
+       align-self: flex-start;
+    }
     header .buttons{
         align-self: flex-end;
+
     }
     header button{
         font-size: 1.9vw;
@@ -147,6 +152,12 @@ p.saved{
 .saved:hover{
     background-color: var(--cor-detalhe);
     color: white;
+}
+
+/* classlist */
+.move {
+    grid-template-columns: 1% 1fr;
+    transition: all 0.4s ease;
 }
 
 /* adaptação telas pequenas (menores de 700 px) */
