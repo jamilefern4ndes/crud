@@ -18,17 +18,19 @@ inputContent.addEventListener('keydown', function(event) {
 function saveThisTask(){
     const title = inputTitle.value.trim()
     const content = inputContent.value.trim()
-
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+    
     if (title === '' || content === '') {
       alert('Preencha título e conteúdo da tarefa.')   
       return
     }
+
     if (tasks.some(t => t.title === title)) {
     alert('Já existe uma tarefa com esse título.');
     return;
-  }
+    }
 
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+    
     tasks.push({ title, content })
     localStorage.setItem('tasks', JSON.stringify(tasks))
 
@@ -119,7 +121,6 @@ shrinkList.addEventListener('click', () => {
     const container = document.querySelector('.container')         //mostrar lista
     container.classList.toggle('move')
 });
-
 
 
 //carrega a lista ao abrir a página
