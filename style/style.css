@@ -140,10 +140,10 @@ p.saved{
     margin:2px;
     height: 4vw;
     font-family: var(--fonte-base);
-    font-size: 2vw;
+    font-size: 3vw;
     color: var(--cor-fonte);
     border-radius: 5px ;
-    padding-left: 0.7vw;
+    padding: 2.5vh 1.3vw;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -156,6 +156,6 @@ p.saved{
 
 /* classlist */
 .move {
-    grid-template-columns: 20% 1fr;
+    grid-template-columns: 25% 1fr;
     transition: all 0.4s ease;
 }
