@@ -125,8 +125,8 @@ textarea::-webkit-scrollbar-thumb:hover {
     text-align: center;
     font-family: var(--fonte-base);
     font-weight: var(--font-weight);
-    font-size: 3.5vw;
-    padding: 2vw 5px;
+    font-size: 3vw;
+    padding: 2vw;
     border-bottom: 1px solid var(--cor-detalhe);
     overflow: hidden;
     text-overflow: ellipsis;
@@ -140,7 +140,7 @@ p.saved{
     margin:2px;
     height: 4vw;
     font-family: var(--fonte-base);
-    font-size: 3vw;
+    font-size: 2vw;
     color: var(--cor-fonte);
     border-radius: 5px ;
     padding-left: 0.7vw;
@@ -160,3 +160,25 @@ p.saved{
     transition: all 0.4s ease;
 }
 
+/* telas maiores */
+@media screen and ( min-width:650px){
+    header button{
+        font-size: 2vw;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    input#title{
+    font-size: 4vw; 
+    }
+    #content{
+        font-size: 3.4vw; 
+    }
+    .tasks h2{
+    font-size: 2.5vw;
+    padding: 1.6vw 5px;
+    }
+    p.saved{
+    height: 3vw;
+    font-size: 1.5vw;
+    }
+}
