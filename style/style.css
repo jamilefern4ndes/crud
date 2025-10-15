@@ -18,13 +18,14 @@
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template: auto/25% 1fr;
+    grid-template: auto/1% 1fr;
 
 }
 section.tasks{
     grid-area: 1/1/2/2;
     border-right: 1px solid var(--cor-detalhe);
     transition: all 0.4s ease;
+    display: none;
 }
    
 section.new-task{
@@ -38,14 +39,10 @@ section.new-task{
     justify-content: space-between;
 }
     header #shrinkList{
-       background-color: var(--cor-detalhe);
+       background-color: transparent;
        color: var(--cor-fonte2);
        border-color: #1b1b1b;
-       align-self: flex-start;
-    }
-    header .buttons{
-        align-self: flex-end;
-
+       font-size: 3vw; 
     }
     header button{
         font-size: 5vw;
@@ -53,10 +50,10 @@ section.new-task{
         border-radius: 5px;
         border: 1px solid var(--cor-detalhe);
         padding: 2vw;
-        transition: all 0.4s ease-in;
+        transition: all 0.2s ease-in;
     }
     header button:hover{
-        opacity: 80%;
+        opacity: 70%;
     }
     header button:active{
         transform: scale(0.95);
@@ -93,7 +90,7 @@ input#title{
     border:none;
     padding: 5px;
     width: 70vw;
-    height: 70vh;
+    height: 50vh;
     font-size: 5vw; 
     color: var(--cor-fonte);
     resize: none;
@@ -129,9 +126,11 @@ textarea::-webkit-scrollbar-thumb:hover {
     font-family: var(--fonte-base);
     font-weight: var(--font-weight);
     font-size: 3.5vw;
-    margin: 2vh auto;
-    padding: 5px;
+    padding: 2vw 5px;
     border-bottom: 1px solid var(--cor-detalhe);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 p.saved{
     display: flex;
@@ -145,6 +144,9 @@ p.saved{
     color: var(--cor-fonte);
     border-radius: 5px ;
     padding-left: 0.7vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .saved:hover{
@@ -154,7 +156,7 @@ p.saved{
 
 /* classlist */
 .move {
-    grid-template-columns: 1% 1fr;
+    grid-template-columns: 20% 1fr;
     transition: all 0.4s ease;
 }
 

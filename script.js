@@ -31,6 +31,8 @@ function saveThisTask(){
 
     inputTitle.value = ''
     inputContent.value = ''
+
+    window.onload
 }
 
 //atualiza a lista lateral com os títulos salvos
@@ -101,12 +103,12 @@ function actions(task) {
 //encolher a lista de itens salvos
 shrinkList.addEventListener('click', () => {
   //mudar botão
-    if (shrinkList.textContent === '<') {
-        shrinkList.textContent = '>'
-        document.querySelector('.tasks').style.display = 'none'   //recolher lista
-    } else {
+    if (shrinkList.textContent === '>') {
         shrinkList.textContent = '<'
-        document.querySelector('.tasks').style.display = 'block'
+        document.querySelector('.tasks').style.display = 'block'   //recolher lista
+    } else {
+        shrinkList.textContent = '>'
+        document.querySelector('.tasks').style.display = 'none'
     }
 
     const container = document.querySelector('.container')         //mostrar lista
