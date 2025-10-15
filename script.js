@@ -10,18 +10,23 @@ const newTask       = document.querySelector('#newTask')          //criar nova t
 //salvar nova tarefa
 saveTask.addEventListener('click', saveThisTask) 
 inputContent.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-      saveThisTask()
-    }
+  if (event.key === 'Enter') {
+    saveThisTask()
+  }
 })
+
 function saveThisTask(){
     const title = inputTitle.value.trim()
     const content = inputContent.value.trim()
 
     if (title === '' || content === '') {
-      alert('Preencha título e conteúdo da tarefa.')
+      alert('Preencha título e conteúdo da tarefa.')   
       return
     }
+    if (tasks.some(t => t.title === title)) {
+    alert('Já existe uma tarefa com esse título.');
+    return;
+  }
 
     const tasks = JSON.parse(localStorage.getItem('tasks')) || []
     tasks.push({ title, content })
@@ -32,7 +37,7 @@ function saveThisTask(){
     inputTitle.value = ''
     inputContent.value = ''
 
-    window.onload
+    window.location.reload()
 }
 
 //atualiza a lista lateral com os títulos salvos
