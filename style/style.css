@@ -48,11 +48,11 @@ section.new-task{
 
     }
     header button{
-        font-size: 3.5vw;
+        font-size: 5vw;
         color: var(--cor-fonte);
         border-radius: 5px;
         border: 1px solid var(--cor-detalhe);
-        padding: 1vw;
+        padding: 2vw;
         transition: all 0.4s ease-in;
     }
     header button:hover{
@@ -80,12 +80,12 @@ section.new-task{
 /* configurando entrada de dados */
 
 input#title{
-    margin: 10px auto;
+    margin: 2vh auto;
     background-color: transparent;
     border:none;
     padding: 2px;
     width: 70vw;
-    font-size: 5vw; 
+    font-size: 6vw; 
     color: var(--cor-fonte);
 }
 #content{
@@ -94,7 +94,7 @@ input#title{
     padding: 5px;
     width: 70vw;
     height: 70vh;
-    font-size: 4vw; 
+    font-size: 5vw; 
     color: var(--cor-fonte);
     resize: none;
     font-family: var(--fonte-base);
@@ -128,7 +128,7 @@ textarea::-webkit-scrollbar-thumb:hover {
     text-align: center;
     font-family: var(--fonte-base);
     font-weight: var(--font-weight);
-    font-size: 3vw;
+    font-size: 3.5vw;
     margin: 2vh auto;
     padding: 5px;
     border-bottom: 1px solid var(--cor-detalhe);
@@ -139,9 +139,9 @@ p.saved{
     align-items: center;
     flex-wrap: nowrap;
     margin:2px;
-    height: 2.7vw;
+    height: 4vw;
     font-family: var(--fonte-base);
-    font-size: 2.5vw;
+    font-size: 3vw;
     color: var(--cor-fonte);
     border-radius: 5px ;
     padding-left: 0.7vw;
