@@ -1,0 +1,22 @@
+/* telas maiores */
+@media screen and ( min-width:650px){
+    header button{
+        font-size: 2vw;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    input#title{
+    font-size: 4vw; 
+    }
+    #content{
+        font-size: 3.4vw; 
+    }
+    .tasks h2{
+    font-size: 2.5vw;
+    padding: 1.6vw 5px;
+    }
+    p.saved{
+    height: 3vw;
+    font-size: 1.5vw;
+    }
+}
