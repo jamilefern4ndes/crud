@@ -9,25 +9,29 @@
     <title>To-Do list (CRUD)</title>
 </head>
 <body>
+    <!-- tela principal -->
     <main class="container">
         <section class="tasks">
             <h2>Your Tasks</h2>
-            <div class="list-tasks-saved">
-
-            </div>
+            <!-- exibição das tarefas salvas -->
+            <div class="list-tasks-saved"></div>
         </section>
+        <!-- campos de entrada de dados e ações do usuário -->
         <section class="new-task">
             <header id="header">
                 <div class="shrink-list">
-                    <button id="shrinkList">&#62;</button>
+                     <button id="shrinkList">&#62;</button>  <!-- encolher ou ebibir aba lateral -->
                 </div>
+                <!-- boões de salvar, deletar ou criar nova tarefa -->
                 <div class="buttons">
                     <button id="saveTask">Save</button>
                     <button id="deleteTask">Delete</button>
                     <button id="newTask">New</button>
                 </div>
             </header>
+            <!-- título da tarefa -->
             <input type="text" name="title" id="title" placeholder="Title..." maxlength="30" autofocus>
+            <!-- conteúdo da tarefa -->
             <textarea name="content" id="content" placeholder="Enter the task content"></textarea>
         </section>
     </main>

@@ -7,23 +7,22 @@ const saveTask      = document.querySelector('#saveTask')         //salvar taref
 const deleteTask    = document.querySelector('#deleteTask')       //deletar tarefa
 const newTask       = document.querySelector('#newTask')          //criar nova tarefa
 
-//salvar nova tarefa
+
 saveTask.addEventListener('click', saveThisTask) 
-inputContent.addEventListener('keydown', function(event) {
+inputContent.addEventListener('keydown', function(event) {       //salvar nova tarefa no click ou no enter
   if (event.key === 'Enter') {
     saveThisTask()
   }
 })
-
 function saveThisTask(){
-    const title = inputTitle.value.trim()
+    const title = inputTitle.value.trim()             //pegar os dados digitados
     const content = inputContent.value.trim()
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || []      //salvar array no localStorage
     
     if (title === '' || content === '') {
       alert('Preencha título e conteúdo da tarefa.')   
       return
-    }
+    }                                                     //ações para evitar duplicação e áreas vazias
 
     if (tasks.some(t => t.title === title)) {
     alert('Já existe uma tarefa com esse título.');
@@ -32,9 +31,9 @@ function saveThisTask(){
 
     
     tasks.push({ title, content })
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    localStorage.setItem('tasks', JSON.stringify(tasks))     //armazenando a nova tarefa 
 
-    updateSavedTasksList()
+    updateSavedTasksList()                  //atualizando lista de tarefas 
 
     inputTitle.value = ''
     inputContent.value = ''
@@ -44,18 +43,17 @@ function saveThisTask(){
 
 //atualiza a lista lateral com os títulos salvos
 function updateSavedTasksList() {
-    const taskSaved = document.querySelector('.list-tasks-saved')
+    const taskSaved = document.querySelector('.list-tasks-saved')     //limpa a lista para novos dados
     taskSaved.innerHTML = ''
 
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || []     //pega os itens para exibição
 
     tasks.forEach(task => {
       const p = document.createElement('p')
-      p.setAttribute('class', 'saved')
+      p.setAttribute('class', 'saved')                  //cria o <p> para exibir os títulos
       p.textContent = task.title
 
-      //visualizar conteúdo ao clicar no título
-      p.addEventListener('click', () => {
+      p.addEventListener('click', () => {               //visualizar conteúdo ao clicar no título
         leadTask(task.title)
       })
 
@@ -65,16 +63,15 @@ function updateSavedTasksList() {
 
 //carrega título e conteúdo 
 function leadTask(title) {
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [] 
     const task = tasks.find(t => t.title === title)
-
+                                                        
     if (task) {
-      inputTitle.value = task.title
+      inputTitle.value = task.title                       //possibilita a leitura das tarefas salvas
       inputContent.value = task.content
 
-      deleteTask.classList.toggle('buttons')
       newTask.style.display = 'inline-block' 
-      deleteTask.style.display = 'inline-block'
+      deleteTask.style.display = 'inline-block'       //mostra os botões conforme necessidade
       saveTask.style.display = 'none'
       actions(task)
     } else {
@@ -82,10 +79,11 @@ function leadTask(title) {
     }
     
 }
+
 function actions(task) {
-  //deletar tarefa
+  
   deleteTask.onclick = () => {
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || []         //deletar tarefa
     const updatedTasks = tasks.filter(t => t.title !== task.title)
     localStorage.setItem('tasks', JSON.stringify(updatedTasks))
 
@@ -98,8 +96,7 @@ function actions(task) {
     updateSavedTasksList()
   }
 
-  //nova tarefa
-  newTask.onclick = () => {
+    newTask.onclick = () => {                       //nova tarefa
     inputTitle.value = ''
     inputContent.value = ''
     saveTask.style.display = 'inline-block'
@@ -107,6 +104,7 @@ function actions(task) {
     newTask.style.display = 'none'
   }
 }
+
 //encolher a lista de itens salvos
 shrinkList.addEventListener('click', () => {
   //mudar botão

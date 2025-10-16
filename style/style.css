@@ -12,6 +12,7 @@
 *{
     margin: 0; padding: 0; box-sizing: border-box;
 }
+/* tela principal */
 .container{
     background-color: var(--cor-principal);
     color: var(--cor-fonte);
@@ -21,13 +22,14 @@
     grid-template: auto/1% 1fr;
 
 }
+/* aba lateral */
 section.tasks{
     grid-area: 1/1/2/2;
     border-right: 1px solid var(--cor-detalhe);
     transition: all 0.4s ease;
     display: none;
 }
-   
+/* area de ações e manipulação de dados */
 section.new-task{
     grid-area: 1/2/2/2;
     padding: 10px;
@@ -38,12 +40,14 @@ section.new-task{
     flex-wrap: wrap-reverse;
     justify-content: space-between;
 }
+    /* manipular aba lateral */
     header #shrinkList{
        background-color: transparent;
        color: var(--cor-fonte2);
        border-color: #1b1b1b;
        font-size: 3vw; 
     }
+    /* botões geral */
     header button{
         font-size: 5vw;
         color: var(--cor-fonte);
@@ -58,6 +62,7 @@ section.new-task{
     header button:active{
         transform: scale(0.95);
     }
+    /* salvar, deletar ou criar tarefa */
     button#saveTask{
         background-color: var(--cor-secundaria);
     }
@@ -101,7 +106,7 @@ input#title:focus, #content:focus{
     outline: none;
 }
 
-/* Estilo da barra de rolagem */
+/* estilo da barra de rolagem */
 textarea::-webkit-scrollbar {
   width: 8px;
 }
@@ -110,7 +115,7 @@ textarea::-webkit-scrollbar-track {
   background: var(--cor-detalhe);
   border-radius: 4px;
 }
-/* Parte que desliza */
+/*parte que desliza */
 textarea::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 4px;
