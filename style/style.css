@@ -96,8 +96,8 @@ input#title{
     padding: 5px;
     width: 70vw;
     height: 50vh;
-    font-size: 4.5vw; 
-    color: var(--cor-fonte);
+    font-size: 4vw; 
+    color: var(--cor-fonte2);
     resize: none;
     font-family: var(--fonte-base);
 }
