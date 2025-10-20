@@ -32,7 +32,7 @@ section.tasks{
 /* area de ações e manipulação de dados */
 section.new-task{
     grid-area: 1/2/2/2;
-    padding: 10px;
+    padding: 15px;
 }
 
 #header{
@@ -100,6 +100,7 @@ input#title{
     color: var(--cor-fonte2);
     resize: none;
     font-family: var(--fonte-base);
+    padding: 10px;
 }
 input#title:focus, #content:focus{
     border: none;
